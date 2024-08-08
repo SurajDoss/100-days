@@ -1,0 +1,17 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs);
+        StringBuilder commonPrefix = new StringBuilder();
+        String firstElement = strs[0];
+        String lastElement = strs[strs.length - 1];
+        int length = Math.min(firstElement.length(), lastElement.length());
+
+        for( int i = 0; i < length; i++ ){
+            if(firstElement.charAt(i) != lastElement.charAt(i)){
+                return commonPrefix.toString();
+            }
+            commonPrefix.append(firstElement.charAt(i));
+        }
+    return commonPrefix.toString();
+    }
+}
