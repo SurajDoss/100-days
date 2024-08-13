@@ -1,0 +1,29 @@
+class Solution {
+    public int strStr(String str1, String str2) {
+        if(str1.contains(str2)){
+            return str1.indexOf(str2);
+        }else{
+            return -1;
+        }
+    }
+
+    public int strStrSlicing(String str1, String str2) {
+        int str1Leng = str1.length();
+        int str2Leng = str2.length();
+        if(str1Leng < str2Leng){
+            return -1;
+        }
+
+        for(int i = 0; i < ( str1Leng ); i++ ){
+            if(str1.charAt(i) == str2.charAt(0) && ( i + str2.length() <= str1Leng )){
+                if( str1.substring(i, i + str2.length()).equals(str2) ){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+}
+
+
+
