@@ -1,0 +1,26 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        if(s == null || s.isEmpty()){
+            return true;
+        }
+        int j= s.length() - 1;
+        int i = 0;
+        while(i <= j){
+            Character firstPointer = s.charAt(i);
+            Character lastPointer =  s.charAt(j);
+            if(!Character.isLetterOrDigit(firstPointer)){
+                i++;
+            }else if(!Character.isLetterOrDigit(lastPointer)){
+                j--;
+            }else{
+                if( Character.toLowerCase(firstPointer) != Character.toLowerCase(lastPointer)){
+                    return false;
+                }
+                j--;
+                i++;
+            }
+
+        }
+        return true;
+    }
+}
