@@ -17,16 +17,22 @@ class Solution {
         return new int[] {};
     }
 
-  public int[] twoSumOpt(int[] nums, int target) {
-        HashMap<Integer, Integer> stateHolder = new HashMap<Integer, Integer>();
+  public int[] twoSum(int[] nums, int target) {
         int length = nums.length;
+        Map<Integer, Integer> valuesVsIndex = new HashMap<Integer, Integer>();
 
         for(int i = 0; i < length; i++){
-            if(stateHolder.containsKey(target - nums[i])){
-                return new int[] { stateHolder.get(target - nums[i]), i};
+            /**
+            * we iterate the i till the last, so that we can find the two index.
+            * always target = i + j, so, target - i = j. we need to find that j by cutting a iteration.
+            * put the (num[i], i) in the hashMap. to check the j
+            */
+            int subOfNum = target - nums[i];
+            if( valuesVsIndex.containsKey( subOfNum ) ){
+                return new int[] { valuesVsIndex.get( subOfNum ), i };
             }
-            stateHolder.put(nums[i], i);
+            valuesVsIndex.put( nums[i], i);
         }
-        return new int[]{};
+        return new int[] {};
     }
 }
