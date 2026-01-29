@@ -1,15 +1,20 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int arryLength = nums.length;
+        /**
+        * we iterate the i till the last index - 1, so that j will go till last index
+        * the for the j start index should be i + 1, because j point should always start from the index of i + 1.
+        * we return empty array if the length is not forun
+        */
         for(int i = 0; i < arryLength - 1; i++ ){
-            for(int j = i+1; j < arryLength; j++){
+            for(int j = i + 1; j < arryLength; j++){
                 if( nums[i] + nums[j] == target){
                     return new int[] {i, j};
                 }
             }
 
         }
-        return new int[]{};
+        return new int[] {};
     }
 
   public int[] twoSumOpt(int[] nums, int target) {
