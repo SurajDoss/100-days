@@ -18,4 +18,26 @@ class Solution {
         }
 
     }
+
+    public void mergeBetter(int[] nums1, int m, int[] nums2, int n) {
+        int nums1Length = nums1.length;
+
+        int pointerOne = m - 1;
+        int pointerTwo = n - 1;
+        int pointerThree = ( m + n ) - 1;
+
+        while(pointerThree >= 0){
+            int elementOne = pointerOne >= 0 ? nums1[pointerOne] : Integer.MIN_VALUE;
+            int elementTwo = pointerTwo >= 0 ? nums2[pointerTwo] : Integer.MIN_VALUE;
+
+            if(elementOne > elementTwo){
+                nums1[pointerThree] = elementOne;
+                pointerOne--;
+            }else{
+                nums1[pointerThree] = elementTwo;
+                pointerTwo--;
+            }
+            pointerThree--;
+        }
+    }
 }
