@@ -17,4 +17,23 @@ class Solution {
 
         return 0;
     }
+
+    public int majorityElement1(int[] nums) {
+        Map<Integer, Integer> feqNumberMap = new HashMap<Integer, Integer>();
+        int length = nums.length;
+        int pointer = 0;
+
+        while( pointer < length){
+            feqNumberMap.put(nums[pointer], feqNumberMap.getOrDefault( nums[pointer] , 0 ) + 1);
+            pointer++;
+        }
+
+        Integer majority = length / 2 ;
+        for( Integer number : feqNumberMap.keySet() ){
+            if(feqNumberMap.get(number) > majority){
+                return number;
+            }
+        }
+        return 0;
+    }
 }
