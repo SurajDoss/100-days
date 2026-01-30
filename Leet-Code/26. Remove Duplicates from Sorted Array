@@ -11,5 +11,20 @@ class Solution {
         }
         return counter;
     }
-    
+
+
+    public int removeDuplicatesBetter(int[] nums) {
+        int counter = 1;
+        int length = nums.length;
+        int pointer = 1;
+
+        while( pointer < length){
+            if( nums[pointer] != nums[pointer-1] ){
+                nums[counter] = nums[pointer];
+                counter++;
+            }
+            pointer++; 
+        }
+        return counter;
+    }
 }
