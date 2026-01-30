@@ -36,4 +36,20 @@ class Solution {
         }
         return 0;
     }
+
+    /**
+    * Boyer moores voting agorithm, faster and o(1) space comp
+    */
+   public int majorityElement(int[] nums) {
+        int counter = 0;
+        Integer candidate = null;
+
+        for(int number : nums){
+            if( counter == 0 ){
+                candidate = number;
+            }
+            counter += ( candidate == number ) ? +1 : -1 ;
+        }
+        return candidate;
+    }
 }
