@@ -23,6 +23,27 @@ class Solution {
         }
         return -1;
     }
+
+    public int strStrAnotherApproach(String haystack, String needle) {
+        int hayLen = haystack.length();
+        int needLen = needle.length();
+
+        for(int i =0; i < hayLen; i++){
+            int equalIndexer = 0;
+            for(int k = i; k < hayLen; k++){
+                if( equalIndexer < needLen && haystack.charAt(k) == needle.charAt(equalIndexer)){
+                    equalIndexer++;
+                }else{
+                    break;
+                }
+
+                if(equalIndexer == needLen){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 }
 
 
