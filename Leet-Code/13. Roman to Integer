@@ -1,23 +1,36 @@
 class Solution {
-    public int romanToInt(String s) {
-        HashMap<Character, Integer> romanValues = new HashMap<Character, Integer>();
-        romanValues.put('I', 1);
-        romanValues.put('V', 5);
-        romanValues.put('X', 10);
-        romanValues.put('L', 50);
-        romanValues.put('C', 100);
-        romanValues.put('D', 500);
-        romanValues.put('M', 1000);
-        
-        int stringLeng = s.length();
-        int numericValue = 0;
-        for(int i =0; i < stringLeng ; i++){
-            if( i < stringLeng - 1 && romanValues.get( s.charAt(i) ) < romanValues.get( s.charAt(i + 1) )){
-                numericValue -= romanValues.get( s.charAt(i) ); 
+     public int romanToInt(String s) {
+        Map<Character, Integer> romanNumbers = generateRomanMap();
+        char[] charArray = s.toCharArray();
+        int length = charArray.length;
+        int value = 0;
+
+        for(int i = 0, j=1 ; j <= length; i++, j++){
+            if(j == length){
+                value += romanNumbers.get(charArray[i]);
+                break;
+            }
+
+            if( romanNumbers.get(charArray[i]) >= romanNumbers.get(charArray[j]) ){
+                value += romanNumbers.get(charArray[i]);
             }else{
-                numericValue += romanValues.get( s.charAt(i) );
+                value -= romanNumbers.get(charArray[i]);
             }
         }
-        return numericValue;
+
+        return value;
+    }
+
+    private static Map<Character, Integer> generateRomanMap(){
+        Map<Character, Integer> romanNumbers = new HashMap<Character, Integer>();
+        romanNumbers.put('I',1);
+        romanNumbers.put('V',5);
+        romanNumbers.put('X',10);
+        romanNumbers.put('L',50);
+        romanNumbers.put('C',100);
+        romanNumbers.put('D',500);
+        romanNumbers.put('M',1000);
+
+        return romanNumbers;
     }
 }
