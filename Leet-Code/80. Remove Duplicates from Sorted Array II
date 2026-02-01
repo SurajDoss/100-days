@@ -15,4 +15,16 @@ class Solution {
 
         return counter;
     }
+
+    public int removeDuplicatesAnother(int[] nums) {
+        int counter = 0;
+
+        for(int num : nums){
+            if( counter < 2 || nums[counter - 2] != num){
+                nums[counter] = num;
+                counter++;
+            }
+        }
+        return counter;
+    }
 }
