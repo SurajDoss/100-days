@@ -8,7 +8,7 @@ class Solution {
         int fromRight = 0;
         Character leftChar = null;
         Character rightChar = null;
-        while(fromRight <= fromLeft){
+        while(fromRight < fromLeft){
             leftChar = s.charAt(fromLeft);
             rightChar = s.charAt(fromRight);
             if( !Character.isLetterOrDigit(leftChar) ){
