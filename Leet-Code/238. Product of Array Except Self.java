@@ -19,4 +19,20 @@ class Solution {
         }
         return nums;
     }
+
+    public int[] productExceptSelf(int[] nums) {
+        int length = nums.length;
+        int[] answers = new int[length];
+
+        for(int i = 0, temp = 1; i< length; i++){
+            answers[i] = temp;
+            temp *= nums[i];
+        }
+
+        for(int i = length - 1, temp = 1 ; i>= 0; i--){
+            answers[i] *= temp;
+            temp *= nums[i];
+        }
+        return answers;
+    }
 }
