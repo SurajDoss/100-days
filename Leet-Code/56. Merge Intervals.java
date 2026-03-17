@@ -23,4 +23,22 @@ class Solution {
         }
         return ans.toArray(new int[ans.size()][]);
     }
+
+
+    public int[][] mergeOpt(int[][] intervals) {
+        List<int[]> ans = new ArrayList<>();
+        int n = intervals.length;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        for ( int i = 0; i < n; i++){
+            int start = intervals[i][0];
+            int end = intervals[i][1];
+
+            if( ans.isEmpty() || ans.get( ans.size() - 1)[1] < start ){
+                ans.add( new int[]{start, end} );
+            }else{
+                ans.get( ans.size() - 1)[1] = Math.max( end, ans.get( ans.size() - 1)[1] );
+            }   
+        }
+        return ans.toArray(new int[ans.size()][]);
+    }
 }
