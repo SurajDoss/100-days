@@ -30,4 +30,30 @@ class Solution {
         preOrderTraversal( root, values );
         return values;
     }
+
+    public List<Integer> preorderTraversalItr(TreeNode root) {
+        List<Integer> values = new ArrayList<Integer>();
+        
+        if( root == null){
+            return values;
+        }
+
+        Stack<TreeNode> nodeStack = new Stack<TreeNode>();
+        nodeStack.push(root);
+
+        while( !nodeStack.isEmpty() ){
+            TreeNode node = nodeStack.pop();
+            values.add(node.val);
+
+            if( node.right != null ){
+                nodeStack.add( node.right );
+            }
+
+            if( node.left != null ){
+                nodeStack.add( node.left );
+            }
+        }
+
+        return values;
+    }
 }
