@@ -31,4 +31,31 @@ class Solution {
         postOrderTraversal( root, values );
         return values;
     }
+
+     public List<Integer> postorderTraversalItr(TreeNode root) {
+        List<Integer> values = new ArrayList<Integer>();
+        Stack<TreeNode> stackX = new Stack<TreeNode>();
+        Stack<TreeNode> stackY = new Stack<TreeNode>();
+
+        if( root == null){ 
+            return values;
+        }
+
+        stackX.push(root);
+        while( !stackX.isEmpty() ){
+           TreeNode node = stackX.pop();
+           stackY.add(node);
+           if( node.left != null ){
+            stackX.add(node.left);
+           }
+           if( node.right != null ){
+            stackX.add(node.right);
+           }
+        }
+
+        while(!stackY.isEmpty()){
+            values.add( stackY.pop().val );
+        }
+        return values;
+    }
 }
