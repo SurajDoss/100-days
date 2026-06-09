@@ -23,13 +23,34 @@ class Solution {
         inOrderTraversal( node.left, values );
         values.add(node.val);
         inOrderTraversal( node.right, values );
-
-
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> values = new ArrayList<>();
         inOrderTraversal( root, values );
+        return values;
+    }
+
+    public List<Integer> inorderTraversalItr(TreeNode root) {
+        List<Integer> values = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+
+        TreeNode node = root;
+
+        while( true ){
+            if( node!= null ){
+                stack.push( node );
+                node = node.left;
+            }else{
+                if( stack.isEmpty() ){
+                    break;
+                }
+                node = stack.pop();
+                values.add( node.val );
+                node = node.right;
+            }
+        }
+
         return values;
     }
 }
