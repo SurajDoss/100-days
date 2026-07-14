@@ -60,4 +60,24 @@ class Solution {
         }
         return rtView;
     }
+
+    public List<Integer> rightSideViewRecurcive(TreeNode root) {
+        List<Integer> rtView = new ArrayList<>();
+        viewRight( rtView, root, 0);
+        return rtView;
+    }
+
+    private static void viewRight( List<Integer> rtView, TreeNode root, int level){
+        if( root == null){
+            return;
+        }
+
+        if(rtView.size() == level){
+            rtView.add( root.val );
+        }
+
+        viewRight( rtView, root.right, level + 1 );
+        viewRight( rtView, root.left, level + 1 );
+    }
+}
 }
